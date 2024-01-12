@@ -395,7 +395,7 @@ function shuffleChar(str, iterations) {
       if (j % 2 === 1) tail += result[j];
     }
     result = head + tail;
-    if (result === str) shuffleChar(str, iterations % i);
+    if (result === str) return shuffleChar(str, iterations % i);
   }
   return result;
 }
