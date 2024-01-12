@@ -127,8 +127,16 @@ function isIsoscelesTriangle(a, b, c) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  const arrRoman = [
+    ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'],
+    ['X', 'XX', 'XXX'],
+  ];
+  const tens = Math.floor(num / 10);
+  const ones = num % 10;
+  const result =
+    num >= 10 ? arrRoman[1][tens - 1] + arrRoman[0][ones] : arrRoman[0][ones];
+  return result;
 }
 
 /**
@@ -146,8 +154,33 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let result = '';
+  const characters = {
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+    ',': 'point',
+    '.': 'point',
+    '-': 'minus',
+  };
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (result) {
+      case '':
+        result += characters[numberStr[i]];
+        break;
+      default:
+        result += ` ${characters[numberStr[i]]}`;
+    }
+  }
+  return result;
 }
 
 /**
@@ -162,8 +195,14 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let reverseString = '';
+
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    reverseString += str[i];
+  }
+
+  return reverseString === str;
 }
 
 /**
